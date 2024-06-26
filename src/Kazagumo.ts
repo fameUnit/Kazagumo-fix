@@ -400,7 +400,7 @@ export class Kazagumo extends EventEmitter {
     const isUrl = /^https?:\/\/.*/.test(query);
     const customSource = options?.source ?? this.KazagumoOptions.defaultSource ?? `${source}search:`;
 
-    const result = await node.rest.resolve(!isUrl ? `${customSource}${query}` : query).catch((_) => null);
+    const result = await node.rest.resolve(!isUrl ? `${query}` : query).catch((_) => null);
     if (!result || result.loadType === LoadType.EMPTY) return this.buildSearch(undefined, [], 'SEARCH');
 
     let loadType: SearchResultTypes;
